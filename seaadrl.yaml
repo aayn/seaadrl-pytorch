@@ -1,0 +1,36 @@
+baseline:
+  env_name: PongNoFrameskip-v4
+  seed: 1
+  load-dir: trained_models/a2c
+  save-dir: trained_models
+  algo: a2c
+
+cp-attack:
+  env_name: PongNoFrameskip-v4
+  seed: 1
+  load-dir: trained_models/a2c
+  N: 2
+  M: 2
+  train_num_envs: 16
+
+antagonist-attack:
+  env_name: PongNoFrameskip-v4
+  seed: 1
+  load-dir: trained_models/a2c
+  save-dir: trained_models
+  algo: a2c
+  N: 2
+  train_num_envs: 24
+  eval_num_envs: 16
+  total_steps: !!python/int 5_000_000
+  num_steps: 5
+  gamma: 0.99
+  value_loss_coef: 0.5
+  entropy_coef: 0.01
+  lr: !!python/float 7e-4
+  eps: !!python/float 1e-5
+  alpha: 0.99
+  max_grad_norm: 0.5
+  use_linear_lr_decay: False
+  save_interval: 100
+  log_interval: 10
